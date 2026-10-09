@@ -1,11 +1,71 @@
 /*!
- * contact-fix.js  |  Abubakar Sadeeq portfolio
- * - Phone/Call links  -> WhatsApp (+92 325 9896876)
- * - Corrects the displayed phone number everywhere
- * - Adds a working contact form that delivers to abubakarsadeeq6676@gmail.com
- * - Links the LinkedIn button to the LinkedIn profile (Fiverr/Upwork left untouched)
- * Does not modify any other part of the page.
+ * contact-fix.js  |  Abubakar Sadeeq portfolio  (combined: LIGHT PROFESSIONAL THEME + contact fixes)
+ * Part 1 - Light, professional Google Ads theme (overrides the dark colours only)
+ * Part 2 - Phone/Call -> WhatsApp, corrected phone number, contact form, LinkedIn link
+ * index.html is NOT modified. To go back to the dark look, restore the old contact-fix.js.
  */
+(function () {
+  "use strict";
+  var THEME =
+  ":root{" +
+    "--bg:#F6F8FC;--bg-alt:#EDF2FA;--surface:#FFFFFF;--surface-2:#F1F6FE;" +
+    "--border:rgba(15,23,42,0.11);--border-soft:rgba(15,23,42,0.07);" +
+    "--text:#0F172A;--text-dim:#475569;--text-faint:#64748B;" +
+    "--blue:#1A73E8;--red:#D93025;--yellow:#F29900;--green:#188038;" +
+    "--blue-soft:rgba(26,115,232,0.10);--red-soft:rgba(217,48,37,0.10);" +
+    "--yellow-soft:rgba(242,153,0,0.14);--green-soft:rgba(24,128,56,0.10);" +
+    "--shadow:0 18px 40px -22px rgba(15,23,42,0.28);" +
+  "}" +
+  "body::before{background:" +
+    "radial-gradient(ellipse 900px 500px at 12% -5%,rgba(26,115,232,0.10),transparent 60%)," +
+    "radial-gradient(ellipse 800px 500px at 100% 8%,rgba(24,128,56,0.06),transparent 60%)," +
+    "radial-gradient(ellipse 700px 600px at 90% 85%,rgba(251,188,5,0.07),transparent 60%)!important;}" +
+  /* navbar / menus / overlays */
+  ".navbar.scrolled{background:rgba(255,255,255,0.88)!important;box-shadow:0 6px 24px -16px rgba(15,23,42,0.25);}" +
+  ".mobile-menu{background:#fff!important;}" +
+  ".menu-overlay{background:rgba(15,23,42,0.35)!important;}" +
+  ".lightbox{background:rgba(15,23,42,0.82)!important;}" +
+  ".lightbox-close{background:#fff!important;color:#0F172A!important;}" +
+  /* hero */
+  ".hero h1 .accent{background:linear-gradient(100deg,#1A73E8,#188038 70%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;}" +
+  ".hero-tag{background:#fff!important;box-shadow:0 4px 14px -8px rgba(15,23,42,0.25);}" +
+  ".dash-card{background:rgba(255,255,255,0.94)!important;box-shadow:0 14px 30px -14px rgba(15,23,42,0.30)!important;}" +
+  ".hero-spark{opacity:0.35!important;}" +
+  /* cards get a soft shadow so white-on-light still has depth */
+  ".service-card,.case-wrap,.about-side,.cert-card,.contact-card,.campaign-card,.exp-card,.results-band{box-shadow:0 10px 30px -22px rgba(15,23,42,0.25);}" +
+  ".btn-primary,.nav-cta{background:#1A73E8;}" +
+  ".btn-primary:hover,.nav-cta:hover{box-shadow:0 14px 28px -10px rgba(26,115,232,0.45)!important;}" +
+  ".btn-ghost{background:#fff!important;}" +
+  ".btn-ghost:hover{border-color:#1A73E8!important;color:#1A73E8!important;}" +
+  /* case-study screenshot + results */
+  ".case-img-btn,.case-shot,button.case-img{background:#EDF2FA!important;}" +
+  ".case-img-btn .zoom-hint{background:rgba(255,255,255,0.92)!important;}" +
+  ".results-band::before{background:radial-gradient(ellipse 500px 300px at 50% 0%,rgba(26,115,232,0.12),transparent 70%)!important;}" +
+  ".result-hero-num{background:linear-gradient(100deg,#1A73E8,#188038)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;}" +
+  /* CTA band + footer */
+  ".cta-band{background:linear-gradient(135deg,#E8F0FE,#FFFFFF 60%,#E6F4EA)!important;}" +
+  "footer{background:#fff;}" +
+  /* contact form injected by the contact fix */
+  "body .nk-form-wrap{background:#fff!important;border:1px solid rgba(15,23,42,0.11)!important;box-shadow:0 14px 34px -22px rgba(15,23,42,0.30);}" +
+  "body .nk-form input,body .nk-form textarea{background:#F6F8FC!important;border:1px solid rgba(15,23,42,0.18)!important;color:#0F172A!important;}" +
+  "body .nk-form input:focus,body .nk-form textarea:focus{border-color:#1A73E8!important;background:#fff!important;box-shadow:0 0 0 3px rgba(26,115,232,0.18)!important;}" +
+  "body .nk-form button{background:#1A73E8!important;}" +
+  "body .nk-ok{color:#188038!important}body .nk-err{color:#D93025!important}" +
+  "::selection{background:rgba(26,115,232,0.22);}";
+  try {
+    var themeEl = document.createElement("style");
+    themeEl.id = "nk-light-theme";
+    themeEl.textContent = THEME;
+    document.head.appendChild(themeEl);
+    var meta = document.querySelector('meta[name="theme-color"]') || document.createElement("meta");
+    meta.setAttribute("name", "theme-color");
+    meta.setAttribute("content", "#F6F8FC");
+    if (!meta.parentNode) document.head.appendChild(meta);
+  } catch (e) {}
+})();
+
+/* ===================== Part 2: contact fixes (unchanged) ===================== */
+
 (function () {
   "use strict";
 
