@@ -1,6 +1,6 @@
 /*!
- * contact-fix.js  |  Abubakar Sadeeq portfolio  (combined: GOOGLE ADS THEME v2 + contact fixes)
- * Part 1 - Light Google Ads theme: tinted background, blurred Google Ads visuals
+ * contact-fix.js  |  Abubakar Sadeeq portfolio  (combined: GOOGLE ADS DARK THEME v3 + contact fixes)
+ * Part 1 - Dark Google Ads theme: black/navy background, blurred Google Ads visuals
  *          (dashboards, charts, search ads, keywords) behind the sections, frosted-glass cards.
  * Part 2 - Phone/Call -> WhatsApp, corrected phone number, contact form, LinkedIn link.
  * index.html is NOT modified. To go back to the old look, restore the previous contact-fix.js.
@@ -11,81 +11,82 @@
   /* ---------- 1. Colours, glass cards, background layers ---------- */
   var THEME = `
 :root{
-  --bg:#EAF1FD;--bg-alt:#E3ECFB;--surface:#FFFFFF;--surface-2:#F1F6FE;
-  --border:rgba(15,23,42,0.11);--border-soft:rgba(15,23,42,0.07);
-  --text:#0F172A;--text-dim:#475569;--text-faint:#5B6678;
-  --blue:#1A73E8;--red:#D93025;--yellow:#F29900;--green:#188038;
-  --blue-soft:rgba(26,115,232,0.12);--red-soft:rgba(217,48,37,0.10);
-  --yellow-soft:rgba(242,153,0,0.14);--green-soft:rgba(24,128,56,0.10);
-  --shadow:0 18px 40px -22px rgba(15,23,42,0.28);
+  --bg:#0A0E17;--bg-alt:#0D1220;--surface:#121727;--surface-2:#161C2E;
+  --border:rgba(255,255,255,0.10);--border-soft:rgba(255,255,255,0.06);
+  --text:#EDEFF5;--text-dim:#A3ACC0;--text-faint:#7C859B;
+  --blue:#4285F4;--red:#EA4335;--yellow:#FBBC05;--green:#34A853;
+  --blue-soft:rgba(66,133,244,0.16);--red-soft:rgba(234,67,53,0.16);
+  --yellow-soft:rgba(251,188,5,0.16);--green-soft:rgba(52,168,83,0.16);
+  --shadow:0 20px 50px -20px rgba(0,0,0,0.65);
 }
-body{background:linear-gradient(180deg,#E6EFFD 0%,#F4F8FF 28%,#EAF3EE 62%,#FFF6E3 100%) fixed!important;}
+body{background:linear-gradient(180deg,#070A12 0%,#0A0E17 30%,#0B1020 62%,#0A0D15 100%)!important;background-color:#0A0E17!important;}
+html{background:#0A0E17;}
 body::before{background:
-  radial-gradient(ellipse 800px 520px at 8% 0%,rgba(26,115,232,0.22),transparent 62%),
-  radial-gradient(ellipse 700px 500px at 100% 18%,rgba(24,128,56,0.14),transparent 62%),
-  radial-gradient(ellipse 700px 560px at 92% 88%,rgba(251,188,5,0.18),transparent 62%),
+  radial-gradient(ellipse 800px 520px at 8% 0%,rgba(66,133,244,0.20),transparent 62%),
+  radial-gradient(ellipse 700px 500px at 100% 18%,rgba(52,168,83,0.12),transparent 62%),
+  radial-gradient(ellipse 700px 560px at 92% 88%,rgba(251,188,5,0.10),transparent 62%),
   radial-gradient(ellipse 600px 500px at 0% 80%,rgba(234,67,53,0.10),transparent 62%)!important;}
 header.hero{z-index:1;}
-section[style*="--bg-alt"]{background:linear-gradient(180deg,rgba(214,228,252,0.55),rgba(236,244,255,0.25))!important;}
+section[style*="--bg-alt"]{background:linear-gradient(180deg,rgba(20,30,58,0.55),rgba(10,14,23,0.2))!important;}
 
-/* blurred Google Ads visuals */
+/* blurred Google Ads visuals (inverted so they glow on black) */
 .nk-bg{position:absolute;inset:0;overflow:hidden;z-index:-1;pointer-events:none;}
 .nk-bg svg{position:absolute;width:1100px;max-width:none;height:auto;top:30px;
-  filter:blur(5px);opacity:.52;animation:nkdrift 22s ease-in-out infinite;}
+  filter:blur(5px) invert(.92) hue-rotate(180deg) saturate(1.35);opacity:.55;animation:nkdrift 22s ease-in-out infinite;}
 .nk-bg.r svg{right:-230px;-webkit-mask-image:linear-gradient(to left,#000 35%,transparent 80%);mask-image:linear-gradient(to left,#000 35%,transparent 80%);}
 .nk-bg.l svg{left:-230px;-webkit-mask-image:linear-gradient(to right,#000 30%,transparent 72%);mask-image:linear-gradient(to right,#000 30%,transparent 72%);}
-.nk-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.38;}
+.nk-orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.28;}
 @keyframes nkdrift{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-16px) rotate(-.6deg);}}
 @media (max-width:768px){
-  .nk-bg svg{width:760px;opacity:.40;top:10px;}
+  .nk-bg svg{width:760px;opacity:.42;top:10px;}
   .nk-bg.r svg{right:-340px;}.nk-bg.l svg{left:-340px;}
 }
 
-/* frosted-glass cards so the background shows through */
+/* frosted-glass cards */
 .service-card,.case-wrap,.about-side,.cert-card,.contact-card,.campaign-card,.exp-card,.why-item,.results-band,.hero-tag,.skill-chip,.chip,.tag{
-  background:rgba(255,255,255,0.68)!important;
+  background:rgba(255,255,255,0.05)!important;
   -webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);
-  border:1px solid rgba(255,255,255,0.85)!important;
-  box-shadow:0 14px 34px -22px rgba(15,23,42,0.32);
+  border:1px solid rgba(255,255,255,0.10)!important;
+  box-shadow:0 18px 40px -24px rgba(0,0,0,0.8);
 }
-.exp-card:hover{background:rgba(255,255,255,0.92)!important;}
-.metric-tile{background:rgba(232,240,254,0.75)!important;}
-.about-grid .chips span,.chips>*{background:rgba(255,255,255,0.7)!important;}
+.exp-card:hover{background:rgba(255,255,255,0.09)!important;}
+.metric-tile{background:rgba(66,133,244,0.10)!important;}
+.about-grid .chips span,.chips>*{background:rgba(255,255,255,0.06)!important;}
 
 /* navbar, menus, overlays */
-.navbar.scrolled{background:rgba(255,255,255,0.82)!important;box-shadow:0 6px 24px -16px rgba(15,23,42,0.25);}
-.mobile-menu{background:#fff!important;}
-.menu-overlay{background:rgba(15,23,42,0.35)!important;}
-.lightbox{background:rgba(15,23,42,0.82)!important;}
-.lightbox-close{background:#fff!important;color:#0F172A!important;}
+.navbar.scrolled{background:rgba(10,14,23,0.82)!important;box-shadow:0 6px 24px -16px rgba(0,0,0,0.7);}
+.mobile-menu{background:#0D1220!important;}
+.menu-overlay{background:rgba(5,7,12,0.6)!important;}
+.lightbox{background:rgba(4,6,10,0.92)!important;}
+.lightbox-close{background:#121727!important;color:#EDEFF5!important;}
 
 /* hero */
-.hero h1 .accent,.result-hero-num{background:linear-gradient(100deg,#1A73E8,#188038 70%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;}
-.dash-card{background:rgba(255,255,255,0.94)!important;box-shadow:0 14px 30px -14px rgba(15,23,42,0.30)!important;}
-.hero-spark{opacity:0.35!important;}
+.hero h1 .accent,.result-hero-num{background:linear-gradient(100deg,#4285F4,#34A853 60%,#FBBC05)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;}
+.dash-card{background:rgba(18,23,39,0.9)!important;box-shadow:0 14px 30px -14px rgba(0,0,0,0.7)!important;}
+.hero-spark{opacity:0.5!important;}
 
 /* buttons */
-.btn-primary,.nav-cta{background:#1A73E8;}
-.btn-primary:hover,.nav-cta:hover{box-shadow:0 14px 28px -10px rgba(26,115,232,0.45)!important;}
-.btn-ghost{background:rgba(255,255,255,0.8)!important;}
-.btn-ghost:hover{border-color:#1A73E8!important;color:#1A73E8!important;}
+.btn-primary,.nav-cta{background:#4285F4;}
+.btn-primary:hover,.nav-cta:hover{box-shadow:0 14px 28px -10px rgba(66,133,244,0.55)!important;}
+.btn-ghost{background:rgba(255,255,255,0.04)!important;}
+.btn-ghost:hover{border-color:#4285F4!important;color:#8AB4F8!important;}
 
 /* case study + CTA + footer */
-.case-img-btn{background:#EDF2FA!important;}
-.case-img-btn .zoom-hint{background:rgba(255,255,255,0.92)!important;}
-.results-band::before{background:radial-gradient(ellipse 500px 300px at 50% 0%,rgba(26,115,232,0.14),transparent 70%)!important;}
-.cta-band{background:linear-gradient(135deg,rgba(232,240,254,0.85),rgba(255,255,255,0.7) 55%,rgba(230,244,234,0.85))!important;
+.case-img-btn{background:#0d1424!important;}
+.case-img-btn .zoom-hint{background:rgba(10,14,23,0.85)!important;}
+.results-band::before{background:radial-gradient(ellipse 500px 300px at 50% 0%,rgba(66,133,244,0.16),transparent 70%)!important;}
+.cta-band{background:linear-gradient(135deg,rgba(18,30,60,0.85),rgba(18,23,39,0.7) 55%,rgba(16,40,30,0.8))!important;
   -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);}
-footer{background:rgba(255,255,255,0.7);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}
+footer{background:rgba(7,10,18,0.75);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}
 
 /* contact form */
-body .nk-form-wrap{background:rgba(255,255,255,0.8)!important;border:1px solid rgba(255,255,255,0.9)!important;
-  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 14px 34px -22px rgba(15,23,42,0.30);}
-body .nk-form input,body .nk-form textarea{background:#F6F8FC!important;border:1px solid rgba(15,23,42,0.18)!important;color:#0F172A!important;}
-body .nk-form input:focus,body .nk-form textarea:focus{border-color:#1A73E8!important;background:#fff!important;box-shadow:0 0 0 3px rgba(26,115,232,0.18)!important;}
-body .nk-form button{background:#1A73E8!important;}
-body .nk-ok{color:#188038!important}body .nk-err{color:#D93025!important}
-::selection{background:rgba(26,115,232,0.22);}
+body .nk-form-wrap{background:rgba(255,255,255,0.05)!important;border:1px solid rgba(255,255,255,0.12)!important;
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 18px 40px -24px rgba(0,0,0,0.8);}
+body .nk-form input,body .nk-form textarea{background:rgba(0,0,0,0.35)!important;border:1px solid rgba(255,255,255,0.18)!important;color:#EDEFF5!important;}
+body .nk-form input:focus,body .nk-form textarea:focus{border-color:#4285F4!important;box-shadow:0 0 0 3px rgba(66,133,244,0.25)!important;}
+body .nk-form button{background:#4285F4!important;}
+body .nk-ok{color:#34A853!important}body .nk-err{color:#EA4335!important}
+::selection{background:rgba(66,133,244,0.35);}
 `;
 
   /* ---------- 2. Google Ads style artwork (inline SVG, blurred by CSS) ---------- */
@@ -211,7 +212,7 @@ body .nk-ok{color:#188038!important}body .nk-err{color:#D93025!important}
     document.head.appendChild(themeEl);
     var meta = document.querySelector('meta[name="theme-color"]') || document.createElement("meta");
     meta.setAttribute("name", "theme-color");
-    meta.setAttribute("content", "#EAF1FD");
+    meta.setAttribute("content", "#0A0E17");
     if (!meta.parentNode) document.head.appendChild(meta);
     decorate();
   } catch (e) {}
